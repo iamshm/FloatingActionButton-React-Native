@@ -7,7 +7,6 @@ export default class FloatingButton extends Component {
     animation = new Animated.Value(0)
     toggleMenu = () => {
         const toValue = this.open ? 0 : 1
-
         Animated.spring(this.animation, {
             toValue,
             friction: 5
@@ -16,42 +15,42 @@ export default class FloatingButton extends Component {
 
     }
     render() {
-        // const heartstyle = {
-        //     transform: [
-        //         { scale: this.animation },
-        //         {
-        //             translate: this.animation.interpolate({
-        //                 inputRange: [0, 1],
-        //                 outputRange: [0, -200]
-        //             })
-        //         }
+        const heartstyle = {
+            transform: [
+                { scale: this.animation },
+                {
+                    translateY: this.animation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, -200]
+                    })
+                }
 
-        //     ]
-        // };
-        // const thumbstyle = {
-        //     transform: [
-        //         { scale: this.animation },
-        //         {
-        //             translate: this.animation.interpolate({
-        //                 inputRange: [0, 1],
-        //                 outputRange: [0, -140]
-        //             })
-        //         }
+            ]
+        };
+        const thumbstyle = {
+            transform: [
+                { scale: this.animation },
+                {
+                    translateY: this.animation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, -140]
+                    })
+                }
 
-        //     ]
-        // };
-        // const pinStyle = {
-        //     transform: [
-        //         { scale: this.animation },
-        //         {
-        //             translate: this.animation.interpolate({
-        //                 inputRange: [0, 1],
-        //                 outputRange: [0, -80]
-        //             })
-        //         }
+            ]
+        };
+        const pinStyle = {
+            transform: [
+                { scale: this.animation },
+                {
+                    translateY: this.animation.interpolate({
+                        inputRange: [0, 1],
+                        outputRange: [0, -80]
+                    })
+                }
 
-        //     ]
-        // };
+            ]
+        };
         const rotation = {
             transform: [
                 {
@@ -63,24 +62,21 @@ export default class FloatingButton extends Component {
 
             ]
         };
-
-
-
         return (
             <View style={[styles.container, this.props.style]}>
                 <TouchableWithoutFeedback>
-                    <Animated.View style={[styles.button, styles.shadowstyle, styles.secondary/*, heartstyle*/]}>
+                    <Animated.View style={[styles.button, styles.shadowstyle, styles.secondary, heartstyle]}>
                         <AntDesign name="hearto" size={20} color={'#F02A4b'} />
                     </Animated.View>
                 </TouchableWithoutFeedback>
                 <TouchableWithoutFeedback>
-                    <Animated.View style={[styles.button, styles.shadowstyle, styles.secondary/*, thumbstyle*/]}>
+                    <Animated.View style={[styles.button, styles.shadowstyle, styles.secondary, thumbstyle]}>
                         <Entypo name="thumbs-up" size={20} color={'#F02A4b'} />
                     </Animated.View>
                 </TouchableWithoutFeedback>
 
                 <TouchableWithoutFeedback>
-                    <Animated.View style={[styles.button, styles.shadowstyle, styles.secondary/*, pinStyle*/]}>
+                    <Animated.View style={[styles.button, styles.shadowstyle, styles.secondary, pinStyle]}>
                         <MaterialIcons name="location-on" size={20} color={'#F02A4b'} />
                     </Animated.View>
                 </TouchableWithoutFeedback>
